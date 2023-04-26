@@ -1,0 +1,48 @@
+header{
+    background-image: url(to-read-the-book-g87872dc5d_1920.jpg);
+    height: 26rem;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.headerM{
+    background-color: rgb(0 0 0/68%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.headerM a{
+    text-decoration: none;
+    padding: .5rem;
+    background-color: white;
+    color: black;
+    border-radius: .7rem;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.default{
+    margin-top: 2rem;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

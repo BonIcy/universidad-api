@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", getTable);
-/* document.addEventListener("DOMContentLoaded", getModal); */
-let id_user="";
 function getTable(){
     let url = `https://vermenmasterchief.tk/estudiantes.php`
     fetch(url)
@@ -8,20 +6,10 @@ function getTable(){
         return result.json()
     })
     .then(data=>{
-       /*  console.log(data.datos); */
-        showTable(data.datos)
+     showTable(data.datos)
     })
 }
-/* function getModal(){
-    let url2=`https://vermenmasterchief.tk/detalleEstudiante.php?api_key=Metallica&id_usuario=${id_usuario}`
-    fetch(url2)
-    .then(result=>{
-        return result.json()
-    })
-    .then(data=>{
-        console.log(data.datos);
-    })
-} */
+
 function showTable(items){
     let cont = document.querySelector("#cont-table");
     let plantilla = ""
@@ -64,12 +52,19 @@ function showTable(items){
              
             function showModal(datos){
                 let {foto, promedio, sisben} = datos
+                let color= ""
+                if(promedio >= 3){
+                    color = "green"
+                }
+                else{
+                    color = "red"
+                }
                 htmlModal+=`
                  <div><img src="${foto}"></div>
                  <div>
                  <p>Nombre: ${name}</p>
                  <p>Cedula: ${cc} </p>
-                 <p>Promedio: ${promedio}</p>
+                 <p style="color:${color}; text-decoration: underline">Promedio: ${promedio}</p>
                  <p>Puntaje sisben: ${sisben}</p></div>
           `
           htmlTitle += `${name}`
