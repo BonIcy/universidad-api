@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", getTable);
-function getTable(){
+
+/* function getTable(){
     let url = `https://vermenmasterchief.tk/estudiantes.php`
     fetch(url)
     .then(result=>{
@@ -8,8 +9,17 @@ function getTable(){
     .then(data=>{
      showTable(data.datos)
     })
-}
-
+} */
+async function getTable(){
+    let url =`https://vermenmasterchief.tk/estudiantes.php`
+    try{
+      let result = await fetch(url);
+      let data = await result.json();
+      showTable(data.datos);
+    }catch(error){
+      console.log(error);
+    }
+  }
 function showTable(items){
     let cont = document.querySelector("#cont-table");
     let plantilla = ""
@@ -49,28 +59,33 @@ function showTable(items){
                 console.log(data.datos[0]);
                 showModal(data.datos[0])
             })
-             
             function showModal(datos){
                 let {foto, promedio, sisben} = datos
                 let color= ""
+                let ver = ""
                 if(promedio >= 3){
                     color = "green"
+                    ver = "Aprobado"
                 }
                 else{
                     color = "red"
+                    ver = "Reprobado"
                 }
                 htmlModal+=`
                  <div><img src="${foto}"></div>
                  <div>
                  <p>Nombre: ${name}</p>
                  <p>Cedula: ${cc} </p>
-                 <p style="color:${color}; text-decoration: underline">Promedio: ${promedio}</p>
+                 <p>Promedio: ${promedio}</p>
+                 <p style="background:${color}; color:white; margin:1rem;">${ver}</p>
                  <p>Puntaje sisben: ${sisben}</p></div>
           `
           htmlTitle += `${name}`
           modalBody.innerHTML = htmlModal;
           modalTitle.innerHTML = htmlTitle;
+            
             } 
         }
+       
     })
     }
